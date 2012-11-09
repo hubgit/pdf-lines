@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<title>Article</title>
+
+<!-- stylesheets -->
+
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/article.css">
+<link rel="stylesheet" href="css/input.css">
+<link rel="stylesheet" href="css/reader.css">
+<link rel="stylesheet" href="css/lines.css">
+<link rel="stylesheet" href="css/annotation.css">
+
+<!-- elements -->
+
+<footer></footer>
+
+<!-- scripts -->
+
+<script src="vendor/jquery/jquery.js"></script>
+<script src="vendor/jquery/jquery.ajaxQueue.js"></script>
+<script src="vendor/jquery/jquery.pluralise.js"></script>
+<script src="vendor/jquery/jquery.tinysort.js"></script>
+<script src="vendor/jquery/jquery.ba-throttle-debounce.js"></script>
+
+<script src="vendor/handlebars.js"></script>
+<script src="vendor/underscore.js"></script>
+<script src="vendor/backbone.js"></script>
+<script src="vendor/compatibility.js"></script>
+<script src="vendor/pdf.js"></script>
+<script src="vendor/pdf-viewer.js"></script>
+<script src="vendor/xregexp.js"></script>
+<script src="vendor/unicode-base.js"></script>
+
+<script src="js/extractor.js"></script>
+<script src="js/renderer.js"></script>
+
+<script src="js/templates.js"></script>
+<script src="js/models.js"></script>
+<script src="js/collections.js"></script>
+<script src="js/views.js"></script>
+<script src="js/app.js"></script>
+
+
+<!-- templates -->
+
+<script type="text/html" data-template="Sidebar">
+	<a href="#meta">Metadata</a>
+	<a href="#article">Article</a>
+</script>
+
+<script type="text/html" data-template="Input">
+	<div>Drag a PDF file here to get started (or click to choose a file)</div>
+
+	<form>
+		<input name="document" type="file" value="Choose a PDF file to upload">
+		<input type="submit" value="upload">
+	</form>
+</script>
+
+<script type="text/html" data-template="Meta">
+	{{#if fileURL}}<a class="file pdf" href="{{fileURL}}" download="article.pdf"></a>{{/if}}
+
+	<h1 property="name" class="editable" data-button-class="title">{{title}}</h1>
+
+	<ol class="creators sortable horizontal">
+		{{#each creators}}<li property="creator"><span class="fn">{{#if name.full}}{{name.full}}{{else}}{{#each name.given}}{{.}} {{/each}}{{#each name.family}} {{.}}{{/each}}{{/if}}</span> <span class="email">{{email}}</span> <span class="invited">{{#if invited}}{{invited}}{{/if}}</span> <span class="accepted">{{#if accepted}}{{accepted}}{{/if}}</span></li>{{/each}}
+	</ol>
+
+	<h3>Abstract</h3>
+	<p property="abstract" class="editable">{{abstract}}</p>
+</script>
+
+<script type="text/html" data-template="Article">
+	{{#if fileURL}}<a class="file pdf" href="{{fileURL}}" download="article.pdf"></a>{{/if}}
+
+	<h1 property="name" class="editable" data-button-class="title">{{title}}</h1>
+
+	<ol class="creators sortable horizontal">
+		{{#each creators}}<li property="creator"><span class="fn">{{#if name.full}}{{name.full}}{{else}}{{#each name.given}}{{.}} {{/each}}{{#each name.family}} {{.}}{{/each}}{{/if}}</span> <span class="email">{{email}}</span> <span class="invited">{{#if invited}}{{invited}}{{/if}}</span> <span class="accepted">{{#if accepted}}{{accepted}}{{/if}}</span></li>{{/each}}
+	</ol>
+
+	<!--<h3>Abstract</h3>-->
+	<p property="abstract" class="editable">{{abstract}}</p>
+</script>
+
+<script type="text/html" data-template="Annotation">
+	<div>Line {{line}}</div>
+	<div>{{comment}}</div>
+
+	<form>
+		<button class="delete">delete</button>
+	</form>
+</script>

@@ -1,0 +1,56 @@
+.label {
+    width: 100px;
+    font-weight: bold;
+    color: #777;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+article h3 {
+    margin-top: 10px;
+}
+
+[property=abstract] {
+    min-height: 1em;
+}
+
+a.file {
+    display: inline-block;
+    width: 100px;
+    height: 150px;
+}
+
+a.file.pdf {
+    float: right;
+    background-image: url("../images/pdf.svg");
+    background-size: 100% 100%;
+    position: relative;
+    top: -15px;
+}
+
+.editable:hover {
+    background-color: #EDEDFD;
+}
+
+.creators {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.creators li {
+    white-space: nowrap;
+}
+
+.creators li[property=creator]:not(:last-of-type):not(.sortable-dragging):after {
+    content: ", ";
+}
+
+.creators li[property=creator] .email:before {
+    content: "<";
+}
+
+.creators li[property=creator] .email:after {
+    content: ">";
+}
+

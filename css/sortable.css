@@ -1,0 +1,33 @@
+.sortable {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.sortable li {
+	border: 1px solid transparent;
+	padding: 5px 5px 5px 0;
+	height: 14px;
+	line-height: 14px;
+}
+
+.sortable li:hover {
+	background-color: #eef;
+}
+
+.sortable.horizontal li {
+    cursor: ew-resize;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sortable li.sortable-placeholder {
+	border: 1px dashed #CCC;
+	background: none;
+	width: 100px;
+}
+
+.sortable li.sortable-dragging {
+	background: #e6e6ff;
+}

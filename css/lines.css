@@ -1,0 +1,66 @@
+article {
+	position: relative;
+	height: 100%;
+	font-family: sans-serif;
+	counter-reset: line;
+}
+
+.line {
+	position: absolute;
+	display: block;
+	left: 0px !important;
+	right: 0 !important;
+	-webkit-transform: scale(1,1) !important;
+	counter-increment: line;
+	color: #777;
+	font-size: 11px !important;
+	cursor: pointer;
+}
+
+.line.annotated {
+	z-index: 20;
+}
+
+.line:before {
+	content: counter(line);
+	display: inline-block;
+	text-decoration: none;
+	color: #777;
+	padding: 0 10px;
+	text-align: right;
+	background: #fda;
+	width: 20px;
+	height: 100%;
+	z-index: 10;
+}
+
+.line:hover {
+	background: rgba(255, 255, 0, 0.2);
+	z-index: 30;
+}
+
+.line.annotated:hover {
+	background: rgba(0, 255, 0, 0.2);
+}
+
+.line.annotating {
+	background: rgba(255, 255, 0, 0.3);
+	z-index: 40;
+}
+
+.line.annotated.annotating {
+	background: rgba(0, 255, 0, 0.2);
+}
+
+.line:hover:before {
+	background: #E0BA94;
+	color: #000;
+}
+
+.line.annotated:before {
+	background: #0f0;
+}
+
+.line.annotated:hover:before {
+	background: #0d0;
+}
